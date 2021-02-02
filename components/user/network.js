@@ -16,9 +16,9 @@ const list = (req, res) => {
 }
 
 const get = (req, res) => {
-    Controller.get(req.params.customer)
-    .then((customer) => {
-        res.send(customer)
+    Controller.get(req.params.user)
+    .then((user) => {
+        res.send(user)
     })
     .catch((err) =>{
         console.error(err)
@@ -27,18 +27,18 @@ const get = (req, res) => {
 
 const upsert = (req, res) => {
     Controller.upsert(req.body)
-    .then((customer) => {
-        res.send(customer)
+    .then((user) => {
+        res.send(user)
     })
     .catch((err) =>{
         console.error(err)
     })
 }
 
-const deleteCustomer = (req, res) => {
-    Controller.get(req.params.customer)
-    .then((customer) => {
-        res.send(customer)
+const deleteUser = (req, res) => {
+    Controller.get(req.params.user)
+    .then((user) => {
+        res.send(user)
     })
     .catch((err) =>{
         console.error(err)
@@ -47,8 +47,8 @@ const deleteCustomer = (req, res) => {
 
 // Routes
 router.get('/', list)
-router.get('/:customer', get)
+router.get('/:user', get)
 router.post('/', upsert)
-router.delete('/:customer', deleteCustomer)
+router.delete('/:user', deleteUser)
 
 module.exports = router

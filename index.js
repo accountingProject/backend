@@ -16,7 +16,7 @@ app.get('/prosquad', (req, res) => {
     res.send('Me caen gordos')
 })
 routes(app).customerRoute()
-// routes(app).userRoute()
+routes(app).userRoute()
 // routes(app).documentRoute()
 // routes(app).errorsRoute()
 

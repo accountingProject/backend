@@ -3,11 +3,11 @@
 const { Schema } = require('mongoose')
 const { model } = require('mongoose')
 
-let confidentialSchema = new Schema({
-    password: {
-        type: String,
+let dateSchema = new Schema({
+    dateTo: {
+        type: Date,
         required: true
     }
 })
 
-module.exports = model( confidentialSchema )
+module.exports = model( dateSchema )

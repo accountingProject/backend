@@ -2,6 +2,9 @@
 
 const { Schema } = require('mongoose')
 const { model } = require('mongoose')
+const { contactSchema } = require('./contact')
+const { locationSchema } = require('./location')
+const { dateSchema } = require('./date')
 
 let customerSchema = new Schema({
     document: {
@@ -16,46 +19,18 @@ let customerSchema = new Schema({
         type: String,
         required: true 
     },
-    address: {
-        type: String,
-        required: true 
-    },
-    email: {
-        type: String,
-        required: true 
-    },
-    cellphone: {
-        type: String,
-        required: true 
-    },
-    phone: {
-        type: String,
-        required: true 
-    },
+    contact: contactSchema,
     born: {
         type: Date,
         required: true 
     },
-    institute: {
-        type: String,
-        required: true 
-    },
-    town: {
-        type: String,
-        required: true 
-    },
-    area: {
-        type: String,
-        required: true 
-    },
+    location: locationSchema,
     process: {
         type: String,
+        enum: ['VISITA','AGENDAMIENTO','LLAMAR A COORDINADOR','DIGITAL','POR DEFINIR','SIN INTERES'],
         required: true 
     },
-    dateID: {
-        type: String,
-        required: true 
-    },
+    dateID: dateSchema,
     userID: {
         type: String,
         required: true 

@@ -2,6 +2,9 @@
 
 const { Schema } = require('mongoose')
 const { model } = require('mongoose')
+const { confidentialSchema } = require('./confidential')
+const { accessSchema } = require('./access')
+const { contactSchema } = require('./contact')
 
 let userSchema = new Schema({
     document: {
@@ -16,26 +19,9 @@ let userSchema = new Schema({
         type: String,
         required: true 
     },
-    email: {
-        type: String,
-        required: true 
-    },
-    cellphone: {
-        type: String,
-        required: true 
-    },
-    phone: {
-        type: String,
-        required: true 
-    },
-    confidentialID: {
-        type: String,
-        required: true 
-    },
-    accessID: {
-        type: String,
-        required: true 
-    }
+    contact: contactSchema,
+    confidential: confidentialSchema,
+    accessID: accessSchema
 })
 
 module.exports = model( userSchema )
