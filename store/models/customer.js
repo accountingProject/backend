@@ -30,7 +30,7 @@ let customerSchema = new Schema({
         enum: ['VISITA','AGENDAMIENTO','LLAMAR A COORDINADOR','DIGITAL','POR DEFINIR','SIN INTERES'],
         required: true 
     },
-    dateID: dateSchema,
+    date: dateSchema,
     userID: {
         type: String,
         required: true 

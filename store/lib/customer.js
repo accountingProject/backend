@@ -1,7 +1,5 @@
 'use strict'
 
-module.exports = (customerModel) => {
-    create: async (customer) => {
-
-    }
+module.exports = function setupCustomer(customerModel) {
+    
 }
