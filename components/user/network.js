@@ -5,17 +5,17 @@ const router = express.Router()
 const Controller = require('./index')
 
 // Internal Functions
-const list = (req, res) => {
-    Controller.list()
-    .then((listed) => {
-        res.send(listed)
+const listUsers = (req, res) => {
+    Controller.listUsers()
+    .then((users) => {
+        res.send(users)
     })
     .catch((err) =>{
         console.error(err)
     })
 }
 
-const get = (req, res) => {
+const getUser = (req, res) => {
     Controller.get(req.params.user)
     .then((user) => {
         res.send(user)
@@ -36,7 +36,7 @@ const upsert = (req, res) => {
 }
 
 const deleteUser = (req, res) => {
-    Controller.get(req.params.user)
+    Controller.deleteUser(req.params.user)
     .then((user) => {
         res.send(user)
     })
@@ -46,8 +46,8 @@ const deleteUser = (req, res) => {
 }
 
 // Routes
-router.get('/', list)
-router.get('/:user', get)
+router.get('/', listUsers)
+router.get('/:user', getUser)
 router.post('/', upsert)
 router.delete('/:user', deleteUser)
 

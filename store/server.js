@@ -1,9 +1,15 @@
 'use strict'
 
-const mongoose = require('mongoose')
-const { config } = require('../config/config')
+const Mongoose = require('mongoose')
+let mongoose = null
+
+module.exports = function setupDatabase (config) {
+    if (!mongoose){
+        Mongoose.connect(`mongodb+srv://${config.dbUser}:${config.dbPassword}@manager.6or1b.mongodb.net/${config.dbName}?retryWrites=true&w=majority`, () => {
+        console.log('||DB||ON||')
+        })
+    }
+    return mongoose
+}
 
 
-mongoose.connect(`mongodb+srv://${config.dbUser}:${config.dbPassword}@manager.6or1b.mongodb.net/${config.dbName}?retryWrites=true&w=majority`, () => {
-    console.log('||DB||ON||')
-})

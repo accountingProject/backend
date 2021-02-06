@@ -5,18 +5,18 @@ const router = express.Router()
 const Controller = require('./index')
 
 // Internal Functions
-const list = (req, res) => {
-    Controller.list()
-    .then((listed) => {
-        res.send(listed)
+const listCustomer = (req, res) => { 
+    Controller.listCustomer()
+    .then((customers) => {
+        res.send(customers)
     })
     .catch((err) =>{
         console.error(err)
     })
 }
 
-const get = (req, res) => {
-    Controller.get(req.params.customer)
+const getCustomer = (req, res) => {
+    Controller.getCustomer(req.params.customer)
     .then((customer) => {
         res.send(customer)
     })
@@ -25,8 +25,8 @@ const get = (req, res) => {
     })
 }
 
-const upsert = (req, res) => {
-    Controller.upsert(req.body)
+const upsertCustomer = (req, res) => {
+    Controller.upsertCustomer(req.body)
     .then((customer) => {
         res.send(customer)
     })
@@ -36,7 +36,7 @@ const upsert = (req, res) => {
 }
 
 const deleteCustomer = (req, res) => {
-    Controller.get(req.params.customer)
+    Controller.deleteCustomer(req.params.customer)
     .then((customer) => {
         res.send(customer)
     })
@@ -46,9 +46,9 @@ const deleteCustomer = (req, res) => {
 }
 
 // Routes
-router.get('/', list)
-router.get('/:customer', get)
-router.post('/', upsert)
+router.get('/', listCustomer)
+router.get('/:customer', getCustomer)
+router.post('/', upsertCustomer)
 router.delete('/:customer', deleteCustomer)
 
 module.exports = router

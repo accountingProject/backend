@@ -20,7 +20,10 @@ routes(app).userRoute()
 // routes(app).documentRoute()
 // routes(app).errorsRoute()
 
-mongoose.connect(`mongodb+srv://${config.dbUser}:${config.dbPassword}@manager.6or1b.mongodb.net/${config.dbName}?retryWrites=true&w=majority`, () => {
+mongoose.connect(`mongodb+srv://${config.dbUser}:${config.dbPassword}@manager.6or1b.mongodb.net/${config.dbName}?retryWrites=true&w=majority`,
+ { useNewUrlParser: true },
+ { useUnifiedTopology: true },
+ () => {
     console.log('||DB||ON||')
 })
 
